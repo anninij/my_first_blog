@@ -1,37 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//fonts.googleapis.com/css?family=Rubik%20Gemstones&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link href="//fonts.googleapis.com/css?family=Lacquer&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link href="//fonts.googleapis.com/css?family=Poppins&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <title>Solving Problems and Life</title>
         <meta charset="utf-8" />
-    <style>
-        .multicolor-text {
-            text-align: center;
-            font-size: 50px;
-            background: linear-gradient(to left,
-                    rgb(249, 6, 75),
-                    rgb(255, 6, 172),
-                    rgb(246, 8, 178),
-                    rgb(246, 16, 250),
-                    rgb(202, 13, 240),
-                    rgb(151, 10, 239),
-                    rgb(81, 0, 255));
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-    </style>
+
     </head>
     <body>
-        <header>
-            <div class="multicolor-text">
-                Solving Problems and Life
+        <header class="page-header">
+            <div class="container">
+                <h1><a href="/">Solving Problems and Life</a></h1>
             </div>
         </header>
-        {% for post in posts %}
-        <article>
-            <time>published: {{ post.published_date }}</time>
-            <h2><a href="">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </article>  
-        {% endfor %}
+        <main class="container">
+            <div class="row">
+                <div class="col">
+                    {% for post in posts %}
+                        <article class="post">
+                            <time class="date">
+                                {{ post.published_date }}
+                            </time>
+                            <h2><a href="">{{ post.title }}</a></h2>
+                            <p>{{ post.text|linebreaksbr }}</p>
+                        </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </main>
     </body>
 </html>
